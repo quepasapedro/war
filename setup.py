@@ -2,10 +2,10 @@ from setuptools import setup
 
 setup(
     name = 'war',
-    version = '0.1',
+    version = '1.0',
     entry_points = {
         'console_scripts': [
-            'war = war.war:main'
+            'war = war:main'
         ]
     },
     test_suite = 'war.tests',
