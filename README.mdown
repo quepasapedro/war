@@ -21,5 +21,8 @@ Usage
 -----
 
 After installation, run the executable script `war` in order to simulate
-a random playing of the game War between two players using a standard
-52-card deck.
+a random playing of the game War between an arbitrary number of players,
+using a card deck with arbitrary numbers of suits and ranks.
+
+The default number of players is two, the default number of suits is
+four, and the default number of ranks is thirteen.
