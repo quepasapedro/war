@@ -1,0 +1,25 @@
+WAR!
+====
+
+This is an exercise in implementing the card game War per an exercise
+for a job application.
+
+
+Testing
+-------
+
+Execute `python setup.py test`.
+
+
+Installation
+------------
+
+Execute `python setup.py install`.
+
+
+Usage
+-----
+
+After installation, run the executable script `war` in order to simulate
+a random playing of the game War between two players using a standard
+52-card deck.
