@@ -8,7 +8,7 @@ for a job application.
 Testing
 -------
 
-Execute `python setup.py test`.
+In the top-level directory: `python -m unittest discover -v -s war/tests`
 
 
 Installation
