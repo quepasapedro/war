@@ -1,6 +1,6 @@
 import unittest
-from collections import deque
-from copy import copy
+import collections
+import copy
 
 from war.deck import Deck
 from war.player import Player
@@ -8,7 +8,7 @@ from war.player import Player
 
 class TestDeck(unittest.TestCase):
     def test_deck_can_work_like_a_deque(self):
-        self.assertEqual(Deck([1, 2, 3]), deque([1, 2, 3]))
+        self.assertEqual(Deck([1, 2, 3]), collections.deque([1, 2, 3]))
 
     def test_deck_lets_me_set_rank_and_suit_counts_in_constructor(self):
         d = Deck(count_of_suits=2, count_of_ranks=2)
@@ -21,7 +21,7 @@ class TestDeck(unittest.TestCase):
 
     def test_deck_shuffle_works_and_is_non_destructive(self):
         deck = Deck()
-        control = deque(deck)
+        control = collections.deque(deck)
         self.assertEqual(len(deck), len(control))
         self.assertEqual(deck, control)
 
@@ -31,7 +31,7 @@ class TestDeck(unittest.TestCase):
         self.assertNotEqual(deck, control)
 
         # make a shallow copy
-        another_deck = copy(deck)
+        another_deck = copy.copy(deck)
         self.assertEqual(len(deck), len(another_deck))
         self.assertEqual(deck, another_deck)
 
