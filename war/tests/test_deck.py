@@ -1,12 +1,11 @@
 import unittest
 from collections import deque
+from copy import copy
+
 from war.deck import Deck
 
 
 class TestDeck(unittest.TestCase):
-    # def setUp(self):
-    #     pass
-
     def test_deck_can_work_like_a_deque(self):
         self.assertEqual(Deck([1, 2, 3]), deque([1, 2, 3]))
 
@@ -20,18 +19,27 @@ class TestDeck(unittest.TestCase):
         self.assertEqual(d.count_of_ranks, 4)
 
     def test_deck_shuffle_works_and_is_non_destructive(self):
-        d = Deck()
-        control = deque(d)
-        self.assertEqual(len(d), len(control))
-        self.assertEqual(d, control)
+        deck = Deck()
+        control = deque(deck)
+        self.assertEqual(len(deck), len(control))
+        self.assertEqual(deck, control)
 
-        # same number of items in different order --
-        # XXX for very small decks, odds increase this may fail if the
-        # random permutation matches the original order; for very large
-        # decks, performance may suffer
-        d.shuffle()
-        self.assertEqual(len(d), len(control))
-        self.assertNotEqual(d, control)
+        # same number of items in different order
+        deck.shuffle()
+        self.assertEqual(len(deck), len(control))
+        self.assertNotEqual(deck, control)
+
+        # make a shallow copy
+        another_deck = copy(deck)
+        self.assertEqual(len(deck), len(another_deck))
+        self.assertEqual(deck, another_deck)
+
+        # shuffle shallow copy doesn't match control or other
+        another_deck.shuffle()
+        self.assertEqual(len(deck), len(another_deck))
+        self.assertEqual(len(deck), len(control))
+        self.assertNotEqual(deck, another_deck)
+        self.assertNotEqual(deck, control)
 
     def test_does_not_allow_deck_of_one_card(self):
         # two cards is fine

@@ -8,12 +8,11 @@ class Deck(collections.deque):
     """
     Represents a deck of playing cards, based on Python's set type. The
     number cards in the deck equals the count of suits times the count
-    of ranks. Defaults to four suits and thirteen
-    ranks (a standard French-style deck of fifty-two cards).
-    A sequence-based deck which implements the AbstractDeck's interface.
+    of ranks. Defaults to four suits and thirteen ranks (a standard
+    French-style deck of fifty-two cards).
     """
 
-    def __init__(self, s=(), count_of_suits=4, count_of_ranks=13):
+    def __init__(self, s=[], count_of_suits=4, count_of_ranks=13):
         """
         Creates a full set of playing cards, with exactly one each for
         each combination of suit and rank until the counts provided to
@@ -40,7 +39,18 @@ class Deck(collections.deque):
                     self.append(Card(suit, rank))
 
     def shuffle(self):
+        """
+        Randomize the position of the Card objects in place.
+        """
         cards = list(self)
         random.shuffle(cards)
         self.clear()
         self.extend(cards)
+
+    def deal(players=[]):
+        """
+        Deal out Card objects to each of the players until all cards are
+        distributed.
+        """
+
+        pass
