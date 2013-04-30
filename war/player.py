@@ -16,7 +16,18 @@ class Player:
         stack.
         """
 
+        # TODO: Validate Card object
+
         self.hand.append(card)
+
+    def take_cards(self, cards):
+        """
+        Accept a sequence of cards.
+        """
+
+        # TODO: Validate Card objects and sequence
+
+        self.hand.extend(cards)
 
     def play_card(self):
         """
