@@ -3,6 +3,7 @@ from collections import deque
 from copy import copy
 
 from war.deck import Deck
+from war.player import Player
 
 
 class TestDeck(unittest.TestCase):
@@ -49,3 +50,18 @@ class TestDeck(unittest.TestCase):
         # but one card makes no sense for War
         with self.assertRaises(ValueError):
             Deck(count_of_suits=1, count_of_ranks=1)
+
+    def test_deck_deals_out_to_two_players_in_sequence_by_cards(self):
+        players = []
+        for n in range(2):
+            players.append(Player(name=str(n + 1)))
+        d = Deck(count_of_suits=4, count_of_ranks=4)
+        d.shuffle()
+        d.deal(players)
+
+        self.assertEqual(len(players[0].hand), len(players[1].hand))
+        self.assertEqual(len(players[0].hand), 8)
+
+        for n in range(len(players[0].hand)):
+            self.assertNotEqual(players[0].hand[n].__hash__(),
+                                players[1].hand[n].__hash__())

@@ -47,10 +47,19 @@ class Deck(collections.deque):
         self.clear()
         self.extend(cards)
 
-    def deal(players=[]):
+    def deal(self, players=[]):
         """
         Deal out Card objects to each of the players until all cards are
-        distributed.
+        distributed from the top of the Deck (which itself is a FIFO
+        stack). The deck will be empty after this method returns.
         """
 
-        pass
+        # TODO: What if the number of cards aren't divisible by the
+        # number of players?
+
+        if players == []:
+            raise ValueError("No players for dealing")
+
+        for card_index in range(len(self)):
+            player_index = card_index % len(players)
+            players[player_index].take_card(self.pop())

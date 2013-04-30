@@ -7,7 +7,8 @@ from war import War
 
 def main():
     w = War()
-    w.play(verbose=True)
+    winning_player = w.play(verbose=True)
+    print "{0} won!".format(winning_player.name)
 
 if __name__ == '__main__':
     main()
