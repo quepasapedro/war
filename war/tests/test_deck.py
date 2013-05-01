@@ -51,17 +51,68 @@ class TestDeck(unittest.TestCase):
         with self.assertRaises(ValueError):
             Deck(count_of_suits=1, count_of_ranks=1)
 
-    def test_deck_deals_out_to_two_players_in_sequence_by_cards(self):
+    def test_deck_deals_out_to_two_players_correctly(self):
         players = []
-        for n in range(2):
+        for n in range(2):                              # 2 players
             players.append(Player(name=str(n + 1)))
-        d = Deck(count_of_suits=4, count_of_ranks=4)
+
+        d = Deck(count_of_suits=4, count_of_ranks=4)    # 16 cards
         d.shuffle()
         d.deal(players)
 
-        self.assertEqual(len(players[0].hand), len(players[1].hand))
+        # 8 cards each ...
         self.assertEqual(len(players[0].hand), 8)
+        self.assertEqual(len(players[0].hand), len(players[1].hand))
 
+        # ... of different cards
         for n in range(len(players[0].hand)):
             self.assertNotEqual(players[0].hand[n].__hash__(),
                                 players[1].hand[n].__hash__())
+
+    def test_deck_deals_out_to_three_players_correctly(self):
+        players = []
+        for n in range(3):                              # 3 players
+            players.append(Player(name=str(n + 1)))
+
+        d = Deck(count_of_suits=4, count_of_ranks=9)    # 36 cards
+        d.shuffle()
+        d.deal(players)
+
+        # 12 cards each ...
+        self.assertEqual(len(players[0].hand), 12)
+        self.assertEqual(len(players[0].hand), len(players[1].hand))
+        self.assertEqual(len(players[1].hand), len(players[2].hand))
+
+        # ... of different cards
+        for n in range(len(players[0].hand)):
+            self.assertNotEqual(players[0].hand[n].__hash__(),
+                                players[1].hand[n].__hash__())
+            self.assertNotEqual(players[1].hand[n].__hash__(),
+                                players[2].hand[n].__hash__())
+
+    def test_deck_deals_out_to_four_players_correctly(self):
+        players = []
+        for n in range(4):                              # 4 players
+            players.append(Player(name=str(n + 1)))
+
+        d = Deck(count_of_suits=8, count_of_ranks=8)    # 64 cards
+        d.shuffle()
+        d.deal(players)
+
+        # 16 cards each ...
+        self.assertEqual(len(players[0].hand), 16)
+        self.assertEqual(len(players[0].hand), len(players[1].hand))
+        self.assertEqual(len(players[1].hand), len(players[2].hand))
+        self.assertEqual(len(players[2].hand), len(players[3].hand))
+
+        # ... of different cards
+        for n in range(len(players[0].hand)):
+            self.assertNotEqual(players[0].hand[n].__hash__(),
+                                players[1].hand[n].__hash__())
+            self.assertNotEqual(players[1].hand[n].__hash__(),
+                                players[2].hand[n].__hash__())
+            self.assertNotEqual(players[2].hand[n].__hash__(),
+                                players[3].hand[n].__hash__())
+
+    # TODO: Tests with uneven numbers of cards
+    # TODO: Test to make sure cards do not recur in others' hands
