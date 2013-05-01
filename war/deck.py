@@ -1,7 +1,7 @@
 import random
 import collections
 
-from .card import Card
+from card import Card
 
 
 class Deck(collections.deque):

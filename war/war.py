@@ -1,5 +1,5 @@
-from .player import Player
-from .deck import Deck
+from player import Player
+from deck import Deck
 
 
 class War:
@@ -7,21 +7,22 @@ class War:
     Encapsulates the logic which drives the game of War.
     """
 
-    def __init__(self, count_of_suits, count_of_ranks, count_of_players):
+    def __init__(self, count_of_players, count_of_suits, count_of_ranks):
         """
         Sets up deck and players.
         """
 
-        # TODO: Raise ValueError for specific invalid numbers, names
+        # TODO: Raise ValueError for invalid counts (e.g., 0, 1)
         # TODO: Allow inputing names
-
-        self.deck = Deck(count_of_suits=count_of_suits,
-                         count_of_players=count_of_players)
-        self.deck.shuffle()
 
         self.players = []
         for n in range(count_of_players):
-            self.players.append(Player(name=str(n + 1)))
+            self.players.append(Player(name="Player {0}".format(str(n + 1))))
+
+        self.deck = Deck(count_of_suits=count_of_suits,
+                         count_of_ranks=count_of_ranks)
+        self.deck.shuffle()
+        self.deck.deal(self.players)
 
     def play(self, verbose=False):
         """
@@ -29,7 +30,7 @@ class War:
         wins the game.
         """
 
-        self.deck.deal(self.players)
+        return self.players[0] # XXX return actual winner
 
     def battle(self):
         pass
