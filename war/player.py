@@ -26,6 +26,7 @@ class Player:
         """
 
         # TODO: Validate Card objects and sequence
+        # TODO: take cards onto the "bottom" (left) of the hand
 
         self.hand.extend(cards)
 
