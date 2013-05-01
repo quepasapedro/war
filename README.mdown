@@ -1,14 +1,13 @@
 WAR!
 ====
 
-This is an exercise in implementing the card game War per an exercise
-for a job application.
+This is an exercise in implementing the card game War per an exercise for a job application.
 
 
 Testing
 -------
 
-In the top-level directory: `python -m unittest discover -v -s war/tests`
+In the top-level directory: `python -m unittest discover -v -s war/tests`.
 
 
 Installation
@@ -20,9 +19,7 @@ Execute `python setup.py install`.
 Usage
 -----
 
-Can either be executed directly or installed system-wide or in a
-virtualenv environment for execution. To execute locally, change into
-the top-level directory for the project and run:
+Can either be executed directly or installed system-wide or in a virtualenv environment for execution. To execute locally, change into the top-level directory for the project and run:
 
     python -m war [--verbose] --players [PLAYERS] --suits [SUITS]
                   --ranks [RANKS]
@@ -32,3 +29,29 @@ Otherwise:
     war [--verbose] --players [PLAYERS] --suits [SUITS]
         --ranks [RANKS]
 
+
+Example
+-------
+
+The following will print out the course of a game as a count of cards belonging to each player, along with the eventual outcome:
+
+    python -m war --players 2 --suits 4 --ranks 13 --verbose
+
+
+TODO
+----
+
+There are still several items to complete on this.
+
+* There are some cases with more than two players where the game can have a tying condition which goes unresolved and loops forever.
+* Some fluidity and ambiguity in the rules needs to be resolved.
+* Inputs need to be further validated and sanitized. `argparse` does a very nice job of this and catches the majority of problems with types and so on, but certain values can still lead to invalid conditions and eventual exceptions (such as a deck with only two suits and two ranks).
+* War logic could be more modular.
+* Proper interfaces could be implemented via meta-classes in Python.
+* Recursion depth is unchecked except for the size of the deck possible -- itself an unchecked condition.
+* Ideally, War.get_winner() should not have side effects.
+* Unit tests do not have full coverage.
+* Unit tests omit many conditions and can and should mock up the game itself to provide specific kinds of integration tests.
+* LICENSE is empty -- would be MIT if I were to release this.
+* Verbosity might be nice if it were colored output.
+* Other TODO items abound within the source code itself with more specific examples: just `grep` for those.
