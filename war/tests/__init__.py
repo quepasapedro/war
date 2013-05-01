@@ -6,8 +6,15 @@ import sys
 def debug_on(*exceptions):
     """
     Decorator which triggers debugger to start upon a test failure in
-    a specific unit test. Recommended to remove calls to this decorator
-    before releasing code.
+    a specific unit test. Recommended to remove before releasing code.
+
+    To use, import this as a method from the tests module, and then
+    place a line above a unit test function like this:
+
+        class YourTestCase(unittest.TestCase):
+            @debug_on()
+            def test_your_code(self):
+                raise Exception('Debug here ...')
     """
 
     if not exceptions:
