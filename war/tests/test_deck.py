@@ -19,6 +19,19 @@ class TestDeck(unittest.TestCase):
         self.assertEqual(d.count_of_suits, 4)
         self.assertEqual(d.count_of_ranks, 4)
 
+    def test_deck_remembers_its_own_starting_count(self):
+        d = Deck(count_of_suits=2, count_of_ranks=2)
+        self.assertEqual(d.count_of_cards, 4)
+        self.assertEqual(d.count_of_cards, len(d))
+
+        d.shuffle()
+        self.assertEqual(d.count_of_cards, 4)
+        self.assertEqual(d.count_of_cards, len(d))
+
+        d.deal([Player(), Player()])
+        self.assertEqual(d.count_of_cards, 4)
+        self.assertNotEqual(d.count_of_cards, len(d))
+
     def test_deck_shuffle_works_and_is_non_destructive(self):
         deck = Deck()
         control = collections.deque(deck)

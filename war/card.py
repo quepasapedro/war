@@ -7,7 +7,7 @@ class Card(object):
     # TODO: Raise ValueError if comparing against other types or better
     # handle other types to allow Card-to-int comparison
 
-    def __init__(self, rank=1, suit=1):
+    def __init__(self, suit=1, rank=1):
         self.rank = rank
         self.suit = suit
 
@@ -28,3 +28,7 @@ class Card(object):
 
     def __ge__(self, other):
         return self.rank >= other.rank
+
+    def __repr__(self):
+        return 'card.suit == {0}, card.rank == {1}'.format(self.suit,
+                                                           self.rank)

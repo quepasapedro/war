@@ -38,6 +38,8 @@ class Deck(collections.deque):
                 for rank in range(count_of_ranks):
                     self.append(Card(suit, rank))
 
+        self.count_of_cards = len(self)
+
     def shuffle(self):
         """
         Randomize the position of the Card objects in place.

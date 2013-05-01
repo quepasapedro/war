@@ -3,7 +3,9 @@ class Player:
     Represents an agent in the game of War. Remembers hand and name.
     """
 
-    def __init__(self, name="Alice", hand=None):
+    def __init__(self, name, hand=None):
+        if not name:
+            raise ValueError("Player needs a name")
         self.name = name
         if hand:
             self.hand = hand
