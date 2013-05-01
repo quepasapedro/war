@@ -120,12 +120,9 @@ class TestDeck(unittest.TestCase):
 
         # ... of different cards
         for n in range(len(players[0].hand)):
-            self.assertNotEqual(players[0].hand[n].__hash__(),
-                                players[1].hand[n].__hash__())
-            self.assertNotEqual(players[1].hand[n].__hash__(),
-                                players[2].hand[n].__hash__())
-            self.assertNotEqual(players[2].hand[n].__hash__(),
-                                players[3].hand[n].__hash__())
+            self.assertNotEqual(id(players[0].hand[n]), id(players[1].hand[n]))
+            self.assertNotEqual(id(players[1].hand[n]), id(players[2].hand[n]))
+            self.assertNotEqual(id(players[2].hand[n]), id(players[3].hand[n]))
 
     # TODO: Tests with uneven numbers of cards
     # TODO: Test to make sure cards do not recur in others' hands

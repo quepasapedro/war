@@ -17,7 +17,7 @@ class War:
 
         self.players = {}
         for n in range(count_of_players):
-            p = Player(name="Player {0}".format(str(n + 1)))
+            p = Player(name='Player {0}'.format(str(n + 1)))
             self.players[id(p)] = p
 
         self.deck = Deck(count_of_suits=count_of_suits,
