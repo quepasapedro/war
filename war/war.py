@@ -40,7 +40,6 @@ class War:
             battle_winner = self.battle(battle)
             battle_winner.take_cards(self.pot)
 
-            # print the outcome
             war_winner = self.get_winner()
             if war_winner:
                 return war_winner
@@ -52,11 +51,16 @@ class War:
 
     def battle(self, battle={}):
         """
-        Accepts a hash of players with the cards they play. Recursively
+        Accepts a hash of players with the card they play. Recursively
         calls itself until there is a single definitive winner, which
         it returns. Accumulates cards played in the pot for each call.
         """
+        # valid corner case where a tie occurred but only one player had
+        # enough cards to continue the war
+        if len(battle.keys()) == 1:
+            return self.players[battle.keys()[0]]
 
+        # battle!
         high_card = max(battle.values(), key=lambda c: c.rank)
         battle_winners = []
         for player_id, card in battle.iteritems():
@@ -71,20 +75,21 @@ class War:
             next_battle = {}
             for player in battle_winners:
                 if len(player.hand) > 0:
-                    # another card face down ...
-                    self.pot.extend(player.play_card())
-                    # ... and another card face up
                     next_battle[id(player)] = player.play_card()
             return self.battle(next_battle)
 
     def get_winner(self):
         """
-        Returns the player object which has all the cards. If no winner
-        is found, it returns None.
+        Culls players without cards. Returns last player standing if
+        any.
         """
 
-        for player in self.players.itervalues():
-            if self.deck.count_of_cards == len(player.hand):
-                return player
+        candidate_ids = self.players.keys()
+        for candidate_id in candidate_ids:
+            if len(self.players[candidate_id].hand) == 0:
+                del self.players[candidate_id]
 
-        return None
+        if len(self.players.values()) == 1:
+            return self.players.values()[0]
+        else:
+            return None
