@@ -20,9 +20,15 @@ Execute `python setup.py install`.
 Usage
 -----
 
-After installation, run the executable script `war` in order to simulate
-a random playing of the game War between an arbitrary number of players,
-using a card deck with arbitrary numbers of suits and ranks.
+Can either be executed directly or installed system-wide or in a
+virtualenv environment for execution. To execute locally, change into
+the top-level directory for the project and run:
 
-The default number of players is two, the default number of suits is
-four, and the default number of ranks is thirteen.
+    python -m war [--verbose] --players [PLAYERS] --suits [SUITS]
+                  --ranks [RANKS]
+
+Otherwise:
+
+    war [--verbose] --players [PLAYERS] --suits [SUITS]
+        --ranks [RANKS]
+

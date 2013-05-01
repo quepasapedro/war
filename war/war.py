@@ -31,9 +31,3 @@ class War:
         """
 
         return self.players[0] # XXX return actual winner
-
-    def battle(self):
-        pass
-
-    def war(self):
-        pass
