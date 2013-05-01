@@ -1,3 +1,5 @@
+import time
+
 from player import Player
 from deck import Deck
 
@@ -26,7 +28,7 @@ class War:
         self.deck.shuffle()
         self.deck.deal(self.players.values())
 
-    def play(self, verbose=False):
+    def play(self, verbose=False, slow=False):
         """
         Plays a random game of war and returns the player object which
         wins the game.
@@ -49,6 +51,9 @@ class War:
                 for player in self.players.itervalues():
                     status += '*' * len(player.hand) + ' '
                 print status
+
+            if slow:
+                time.sleep(1)
 
     def battle(self, battle={}):
         """
