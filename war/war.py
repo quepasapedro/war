@@ -55,7 +55,7 @@ class War:
         calls itself until there is a single definitive winner, which
         it returns. Accumulates cards played in the pot for each call.
         """
-        # valid corner case where a tie occurred but only one player had
+        # corner case where a tie occurred but only one player had
         # enough cards to continue the war
         if len(battle.keys()) == 1:
             return self.players[battle.keys()[0]]

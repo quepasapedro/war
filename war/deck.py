@@ -32,7 +32,7 @@ class Deck(collections.deque):
             self.count_of_ranks = count_of_ranks
 
             if count_of_suits == 1 and count_of_ranks == 1:
-                raise ValueError("Cannot have a deck of one card!")
+                raise ValueError('Cannot have a deck of one card!')
 
             for suit in range(count_of_suits):
                 for rank in range(count_of_ranks):
@@ -60,7 +60,7 @@ class Deck(collections.deque):
         # number of players?
 
         if players == []:
-            raise ValueError("No players for dealing")
+            raise ValueError('No players for dealing')
 
         for card_index in range(len(self)):
             player_index = card_index % len(players)

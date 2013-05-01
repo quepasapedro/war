@@ -28,7 +28,7 @@ class TestDeck(unittest.TestCase):
         self.assertEqual(d.count_of_cards, 4)
         self.assertEqual(d.count_of_cards, len(d))
 
-        d.deal([Player(), Player()])
+        d.deal([Player('Alice'), Player('Bob')])
         self.assertEqual(d.count_of_cards, 4)
         self.assertNotEqual(d.count_of_cards, len(d))
 
