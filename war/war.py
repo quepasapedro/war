@@ -7,7 +7,8 @@ class War:
     Encapsulates the logic which drives the game of War.
     """
 
-    def __init__(self, count_of_players, count_of_suits, count_of_ranks):
+    def __init__(self, count_of_players=2, count_of_suits=4,
+                 count_of_ranks=13):
         """
         Sets up deck and players.
         """
