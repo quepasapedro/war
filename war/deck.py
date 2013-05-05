@@ -19,9 +19,6 @@ class Deck(collections.deque):
         the constructor are satisfied. For example, four suits and
         thirteen ranks will cause fifty-two cards to be created. Before
         shuffle() is called, guaranteed to be in order.
-
-        Equivalent to the `create` method of the original exercise
-        interface.
         """
 
         # allows me to init a deck by hand or let it init automatically
@@ -52,7 +49,7 @@ class Deck(collections.deque):
     def deal(self, players=[]):
         """
         Deal out Card objects to each of the players until all cards are
-        distributed from the top of the Deck (which itself is a FIFO
+        distributed from the top of the Deck (which itself is a LIFO
         stack). The deck will be empty after this method returns.
         """
 
