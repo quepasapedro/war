@@ -12,7 +12,7 @@ Testing
 -------
 
 In the top-level directory: `python -m unittest discover -v -s
-war/tests`.
+war/test`.
 
 
 Installation

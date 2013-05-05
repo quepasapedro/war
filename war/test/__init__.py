@@ -8,7 +8,7 @@ def debug_on(*exceptions):
     Decorator which triggers debugger to start upon a test failure in
     a specific unit test. Recommended to remove before releasing code.
 
-    To use, import this as a method from the tests module, and then
+    To use, import this as a method from the test module, and then
     place a line above a unit test function like this:
 
         class YourTestCase(unittest.TestCase):
