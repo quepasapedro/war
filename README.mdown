@@ -28,12 +28,12 @@ Can either be executed directly or installed system-wide or in a
 virtualenv environment for execution. To execute locally, change into
 the top-level directory for the project and run:
 
-    python -m war [--verbose] --players [PLAYERS] --suits [SUITS]
-                  --ranks [RANKS]
+    python -m war [--verbose] [--slow] --players [PLAYERS]
+                  --suits [SUITS] --ranks [RANKS]
 
 Otherwise:
 
-    war [--verbose] --players [PLAYERS] --suits [SUITS]
+    war [--verbose] [--slow] --players [PLAYERS] --suits [SUITS]
         --ranks [RANKS]
 
 
